@@ -15,13 +15,10 @@ public interface ProfileDao {
     List<Profile> findAll();
 
     @Query("SELECT * FROM Profile WHERE Profile.uid = :uid")
-    Profile findById(int uid);
-
-    @Query("SELECT * FROM Profile WHERE Profile.surname = :surname AND Profile.name = :name")
-    List<Profile> findByName(String surname, String name);
+    Profile findById(long uid);
 
     @Insert
-    void insertAll(Profile... profiles);
+    long[] insertAll(Profile... profiles);
 
     @Delete
     void delete(Profile profile);

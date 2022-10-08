@@ -1,6 +1,7 @@
 package com.mfaigan.assignment2;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import androidx.room.Room;
@@ -40,43 +41,31 @@ public class DatabaseTest {
     }
 
     @Test
-    public void GivenADatabase_WhenAddingANewProfile_ThenTheProfileIsAdded() {
-        // Act
-        db.profileDao().insertAll(new Profile(0, "Johnson", "Bob", 3.0, new Date(0)));
-        List<Profile> profiles = db.profileDao().findByName("Johnson", "Bob");
-
-        // Assert
-        assertEquals(1, profiles.size());
-    }
-
-    @Test
     public void GivenANonEmptyDatabase_WhenDeletingAProfile_ThenTheProfileIsDeleted() {
         // Arrange
-        db.profileDao().insertAll(new Profile(0, "Doe", "Jane", 4.0, new Date(0)));
-        Optional<Profile> p = db.profileDao().findByName("Doe", "Jane").stream().findFirst();
-        assertTrue(p.isPresent());
+        long[] uids = db.profileDao().insertAll(new Profile(0, "Doe", "Jane", 4.0, new Date(0)));
+        Profile p = db.profileDao().findById(uids[0]);
 
         // Act
-        db.profileDao().delete(p.get());
+        db.profileDao().delete(p);
 
         // Assert
-        assertEquals(0, db.profileDao().findByName("Doe", "Jane").size());
+        assertNull(db.profileDao().findById(uids[0]));
     }
 
     @Test
     public void GivenAProfileWithAccesses_WhenFindingAccessesByProfileId_ThenTheAccessesAreFound() {
         // Arrange
-        db.profileDao().insertAll(new Profile(0, "Bar", "Foo", 2.0, new Date(0)));
-        Optional<Profile> p = db.profileDao().findByName("Bar", "Foo").stream().findFirst();
-        assertTrue(p.isPresent());
+        long[] uids = db.profileDao().insertAll(new Profile(0, "Bar", "Foo", 2.0, new Date(0)));
+        Profile p = db.profileDao().findById(uids[0]);
 
         db.accessDao().insertAll(
-                new Access(0, p.get().getUid(), AccessType.Created, p.get().getCreationDate()),
-                new Access(0, p.get().getUid(), AccessType.Opened, new Date(10000)),
-                new Access(0, p.get().getUid(), AccessType.Closed, new Date(200000)));
+                new Access(0, uids[0], AccessType.Created, p.getCreationDate()),
+                new Access(0, uids[0], AccessType.Opened, new Date(10000)),
+                new Access(0, uids[0], AccessType.Closed, new Date(200000)));
 
         // Act
-        List<Access> accesses = db.accessDao().findByProfileId(p.get().getUid());
+        List<Access> accesses = db.accessDao().findByProfileId(uids[0]);
 
         // Assert
         assertEquals(3, accesses.size());

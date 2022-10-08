@@ -11,33 +11,33 @@ import java.util.Date;
 public class Access {
 
     @PrimaryKey(autoGenerate = true)
-    private int uid;
+    private long uid;
 
-    private int profileId;
+    private long profileId;
     private AccessType accessType;
     // Contrary to the class name, java.util.Date stores a date and a time with ms precision.
     private Date timestamp;
 
-    public Access(int uid, int profileId, AccessType accessType, Date timestamp) {
+    public Access(long uid, long profileId, AccessType accessType, Date timestamp) {
         this.uid = uid;
         this.profileId = profileId;
         this.accessType = accessType;
         this.timestamp = timestamp;
     }
 
-    public int getUid() {
+    public long getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(long uid) {
         this.uid = uid;
     }
 
-    public int getProfileId() {
+    public long getProfileId() {
         return profileId;
     }
 
-    public void setProfileId(int profileId) {
+    public void setProfileId(long profileId) {
         this.profileId = profileId;
     }
 

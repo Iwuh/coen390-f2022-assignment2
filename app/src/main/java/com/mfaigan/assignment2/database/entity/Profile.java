@@ -9,14 +9,14 @@ import java.util.Date;
 public class Profile {
 
     @PrimaryKey(autoGenerate = true)
-    private int uid;
+    private long uid;
 
     private String surname;
     private String name;
     private double gpa;
     private Date creationDate;
 
-    public Profile(int uid, String surname, String name, double gpa, Date creationDate) {
+    public Profile(long uid, String surname, String name, double gpa, Date creationDate) {
         this.uid = uid;
         this.surname = surname;
         this.name = name;
@@ -24,11 +24,11 @@ public class Profile {
         this.creationDate = creationDate;
     }
 
-    public int getUid() {
+    public long getUid() {
         return uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(long uid) {
         this.uid = uid;
     }
 

@@ -11,8 +11,8 @@ import java.util.List;
 @Dao
 public interface AccessDao {
     @Query("SELECT * FROM Access WHERE Access.profileId = :profileId")
-    List<Access> findByProfileId(int profileId);
+    List<Access> findByProfileId(long profileId);
 
     @Insert
-    void insertAll(Access... accesses);
+    long[] insertAll(Access... accesses);
 }
