@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 public class Profile {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     private long uid;
 
     private String surname;

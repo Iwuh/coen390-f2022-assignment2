@@ -43,29 +43,31 @@ public class DatabaseTest {
     @Test
     public void GivenANonEmptyDatabase_WhenDeletingAProfile_ThenTheProfileIsDeleted() {
         // Arrange
-        long[] uids = db.profileDao().insertAll(new Profile(0, "Doe", "Jane", 4.0, new Date(0)));
-        Profile p = db.profileDao().findById(uids[0]);
+        long uid = 0;
+        db.profileDao().insertOne(new Profile(uid, "Doe", "Jane", 4.0, new Date(0)));
+        Profile p = db.profileDao().findById(uid);
 
         // Act
         db.profileDao().delete(p);
 
         // Assert
-        assertNull(db.profileDao().findById(uids[0]));
+        assertNull(db.profileDao().findById(uid));
     }
 
     @Test
     public void GivenAProfileWithAccesses_WhenFindingAccessesByProfileId_ThenTheAccessesAreFound() {
         // Arrange
-        long[] uids = db.profileDao().insertAll(new Profile(0, "Bar", "Foo", 2.0, new Date(0)));
-        Profile p = db.profileDao().findById(uids[0]);
+        long uid = 1;
+        db.profileDao().insertOne(new Profile(uid, "Bar", "Foo", 2.0, new Date(0)));
+        Profile p = db.profileDao().findById(uid);
 
         db.accessDao().insertAll(
-                new Access(0, uids[0], AccessType.Created, p.getCreationDate()),
-                new Access(0, uids[0], AccessType.Opened, new Date(10000)),
-                new Access(0, uids[0], AccessType.Closed, new Date(200000)));
+                new Access(0, uid, AccessType.Created, p.getCreationDate()),
+                new Access(0, uid, AccessType.Opened, new Date(10000)),
+                new Access(0, uid, AccessType.Closed, new Date(200000)));
 
         // Act
-        List<Access> accesses = db.accessDao().findByProfileId(uids[0]);
+        List<Access> accesses = db.accessDao().findByProfileId(uid);
 
         // Assert
         assertEquals(3, accesses.size());

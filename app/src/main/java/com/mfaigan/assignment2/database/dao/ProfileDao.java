@@ -18,7 +18,10 @@ public interface ProfileDao {
     Profile findById(long uid);
 
     @Insert
-    long[] insertAll(Profile... profiles);
+    void insertOne(Profile profile);
+
+    @Insert
+    void insertAll(Profile... profiles);
 
     @Delete
     void delete(Profile profile);

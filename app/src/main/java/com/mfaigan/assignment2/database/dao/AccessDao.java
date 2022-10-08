@@ -14,5 +14,8 @@ public interface AccessDao {
     List<Access> findByProfileId(long profileId);
 
     @Insert
+    long insertOne(Access access);
+
+    @Insert
     long[] insertAll(Access... accesses);
 }
