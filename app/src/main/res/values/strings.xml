@@ -11,6 +11,8 @@
     <string name="label_textview_access_history">Access History</string>
     <string name="label_button_delete_profile">Delete Profile</string>
 
+    <string name="intent_extra_key_profile_id">key_profile_id</string>
+
     <!-- Accessibility Content Descriptions -->
     <string name="content_description_floatingActionButtonAddProfile">Add a new profile</string>
 </resources>

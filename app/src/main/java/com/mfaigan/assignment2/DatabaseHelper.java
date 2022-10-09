@@ -27,6 +27,19 @@ public class DatabaseHelper {
         db.accessDao().insertOne(new Access(0, uid, AccessType.Created, now));
     }
 
+    public void deleteProfile(Profile profile) {
+        db.profileDao().delete(profile);
+        db.accessDao().insertOne(new Access(0, profile.getUid(), AccessType.Deleted, new Date()));
+    }
+
+    public void addNewAccess(long profileId, AccessType accessType) {
+        db.accessDao().insertOne(new Access(0, profileId, accessType, new Date()));
+    }
+
+    public Profile getProfile(long uid) {
+        return db.profileDao().findById(uid);
+    }
+
     public List<Profile> getAllProfiles() {
         return db.profileDao().findAll();
     }
@@ -37,5 +50,9 @@ public class DatabaseHelper {
 
     public List<Profile> getAllProfilesOrderedByName() {
         return db.profileDao().findAllOrderedByName();
+    }
+
+    public List<Access> getAllAccessesToProfile(long profileId) {
+        return db.accessDao().findByProfileId(profileId);
     }
 }

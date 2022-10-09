@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mfaigan.assignment2.database.entity.Access;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,8 +35,8 @@ public class ProfileActivityRecyclerViewAdapter extends RecyclerView.Adapter<Pro
 
     private List<Access> accessList;
 
-    public ProfileActivityRecyclerViewAdapter(List<Access> accessList) {
-        this.accessList = accessList;
+    public ProfileActivityRecyclerViewAdapter() {
+        accessList = Collections.emptyList();
     }
 
     public void setAccessList(List<Access> accessList) {
