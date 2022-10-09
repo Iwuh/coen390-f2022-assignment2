@@ -31,7 +31,11 @@ public class DatabaseHelper {
         return db.profileDao().findAll();
     }
 
-    public List<Profile> getAllProfilesOrdered() {
-        return db.profileDao().findAllOrdered();
+    public List<Profile> getAllProfilesOrderedByUid() {
+        return db.profileDao().findAllOrderedByUid();
+    }
+
+    public List<Profile> getAllProfilesOrderedByName() {
+        return db.profileDao().findAllOrderedByName();
     }
 }
