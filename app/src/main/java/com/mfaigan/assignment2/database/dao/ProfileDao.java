@@ -14,6 +14,9 @@ public interface ProfileDao {
     @Query("SELECT * FROM Profile")
     List<Profile> findAll();
 
+    @Query("SELECT * FROM Profile ORDER BY Profile.creationDate ASC")
+    List<Profile> findAllOrdered();
+
     @Query("SELECT * FROM Profile WHERE Profile.uid = :uid")
     Profile findById(long uid);
 

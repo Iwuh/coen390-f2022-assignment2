@@ -30,4 +30,8 @@ public class DatabaseHelper {
     public List<Profile> getAllProfiles() {
         return db.profileDao().findAll();
     }
+
+    public List<Profile> getAllProfilesOrdered() {
+        return db.profileDao().findAllOrdered();
+    }
 }
