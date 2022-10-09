@@ -10,7 +10,7 @@ import java.util.List;
 
 @Dao
 public interface AccessDao {
-    @Query("SELECT * FROM Access WHERE Access.profileId = :profileId")
+    @Query("SELECT * FROM Access WHERE Access.profileId = :profileId ORDER BY Access.timestamp DESC")
     List<Access> findByProfileId(long profileId);
 
     @Insert
