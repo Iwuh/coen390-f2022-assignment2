@@ -1,5 +1,6 @@
 package com.mfaigan.assignment2;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,6 @@ public class MainActivityRecyclerViewAdapter extends RecyclerView.Adapter<MainAc
             }
             textViewRecyclerViewProfile.setText(text);
         }
-
-        // TODO implement click handler
     }
 
     private List<Profile> profiles;
@@ -65,6 +64,16 @@ public class MainActivityRecyclerViewAdapter extends RecyclerView.Adapter<MainAc
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // The list is zero-indexed, but we want the list to be one-indexed.
         holder.setText(profiles.get(position), position+1, useProfileNames);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pos = holder.getLayoutPosition();
+
+                Intent intent = new Intent(view.getContext(), ProfileActivity.class);
+                intent.putExtra(view.getContext().getString(R.string.intent_extra_key_profile_id), profiles.get(pos).getUid());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
