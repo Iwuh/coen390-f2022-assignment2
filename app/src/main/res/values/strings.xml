@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Assignment2</string>
     <string name="label_menu_main_item_toggle_display">Toggle Display</string>
+    <string name="label_activity_title_profile">Profile Activity</string>
+    <string name="label_textview_user_profile">User Profile</string>
+    <string name="label_textview_surname">Surname:</string>
+    <string name="label_textview_name">Name:</string>
+    <string name="label_textview_id">ID:</string>
+    <string name="label_textview_gpa">GPA:</string>
+    <string name="label_textview_creation_date">Profile created:</string>
+    <string name="label_textview_access_history">Access History</string>
+    <string name="label_button_delete_profile">Delete Profile</string>
 
     <!-- Accessibility Content Descriptions -->
     <string name="content_description_floatingActionButtonAddProfile">Add a new profile</string>
