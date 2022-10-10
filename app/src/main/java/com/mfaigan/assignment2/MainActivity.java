@@ -1,16 +1,17 @@
 package com.mfaigan.assignment2;
 
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.mfaigan.assignment2.database.entity.Profile;
 
@@ -48,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewProfileList.setLayoutManager(manager);
         // Add a line divider between recyclerview elements.
         recyclerViewProfileList.addItemDecoration(new DividerItemDecoration(recyclerViewProfileList.getContext(), manager.getOrientation()));
+
+        findViewById(R.id.floatingActionButtonAddProfile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddProfileDialogFragment fragment = new AddProfileDialogFragment();
+                fragment.show(getSupportFragmentManager(), "AddProfile");
+            }
+        });
     }
 
     @Override
@@ -77,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void refreshProfileDisplay() {
+    public void refreshProfileDisplay() {
         String mode;
         List<Profile> profiles;
         if (useProfileNames) {

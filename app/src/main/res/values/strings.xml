@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Assignment2</string>
+
+    <!-- Labels -->
     <string name="label_menu_main_item_toggle_display">Toggle Display</string>
     <string name="label_activity_title_profile">Profile Activity</string>
     <string name="label_textview_user_profile">User Profile</string>
@@ -10,9 +12,24 @@
     <string name="label_textview_creation_date">Profile created:</string>
     <string name="label_textview_access_history">Access History</string>
     <string name="label_button_delete_profile">Delete Profile</string>
+    <string name="label_button_cancel">Cancel</string>
+    <string name="label_button_save">Save</string>
 
+    <!-- Storage Keys -->
     <string name="intent_extra_key_profile_id">key_profile_id</string>
 
     <!-- Accessibility Content Descriptions -->
     <string name="content_description_floatingActionButtonAddProfile">Add a new profile</string>
+
+    <!-- EditText Hints -->
+    <string name="hint_add_profile_surname">Student Surname</string>
+    <string name="hint_add_profile_name">Student Name</string>
+    <string name="hint_add_profile_id">Student ID#</string>
+    <string name="hint_add_profile_gpa">Student GPA</string>
+
+    <!-- Error Messages -->
+    <string name="error_field_empty">Text fields may not be empty.</string>
+    <string name="error_id_out_of_range">ID must be between 10000000 and 99999999.</string>
+    <string name="error_id_already_in_use">ID is already in use.</string>
+    <string name="error_gpa_out_of_range">GPA must be between 0 and 4.3.</string>
 </resources>
