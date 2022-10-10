@@ -25,12 +25,12 @@ public class MainActivityRecyclerViewAdapter extends RecyclerView.Adapter<MainAc
             textViewRecyclerViewProfile = itemView.findViewById(R.id.textViewRecyclerViewProfile);
         }
 
-        public void setText(Profile profile, int entryNumber, boolean useProfileName) {
+        public void setText(Profile profile, int lineNumber, boolean useProfileName) {
             String text;
             if (useProfileName) {
-                text = String.format(Locale.ENGLISH, "%d. %s, %s", entryNumber, profile.getSurname(), profile.getName());
+                text = String.format(Locale.ENGLISH, "%d. %s, %s", lineNumber, profile.getSurname(), profile.getName());
             } else {
-                text = String.format(Locale.ENGLISH, "%d. %d", entryNumber, profile.getUid());
+                text = String.format(Locale.ENGLISH, "%d. %d", lineNumber, profile.getUid());
             }
             textViewRecyclerViewProfile.setText(text);
         }
@@ -44,10 +44,20 @@ public class MainActivityRecyclerViewAdapter extends RecyclerView.Adapter<MainAc
         this.useProfileNames = useProfileNames;
     }
 
+    /**
+     * Set the list of profiles to be displayed in the RecyclerView.
+     *
+     * @param profiles The list of profiles to be displayed. Should be ordered such that the entries at the top of the list come first.
+     */
     public void setProfiles(List<Profile> profiles) {
         this.profiles = profiles;
     }
 
+    /**
+     * Set whether or not profiles should be displayed by name or ID. Does not affect the order in which they are displayed.
+     *
+     * @param useProfileNames If true, display profile names. Otherwise, display profile IDs.
+     */
     public void setUseProfileNames(boolean useProfileNames) {
         this.useProfileNames = useProfileNames;
     }
@@ -61,7 +71,7 @@ public class MainActivityRecyclerViewAdapter extends RecyclerView.Adapter<MainAc
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // The list is zero-indexed, but we want the list to be one-indexed.
+        // The internal list is zero-indexed, but we want the display to be one-indexed.
         holder.setText(profiles.get(position), position + 1, useProfileNames);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

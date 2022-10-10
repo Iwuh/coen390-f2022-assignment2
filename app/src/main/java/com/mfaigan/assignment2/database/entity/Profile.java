@@ -5,6 +5,9 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
+/**
+ * Represents a student's profile.
+ */
 @Entity
 public class Profile {
 

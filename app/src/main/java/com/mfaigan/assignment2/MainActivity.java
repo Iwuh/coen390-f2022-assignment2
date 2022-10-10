@@ -86,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Updates the relevant views to display the most up-to-date profile information.
+     */
     public void refreshProfileDisplay() {
         String mode;
         List<Profile> profiles;

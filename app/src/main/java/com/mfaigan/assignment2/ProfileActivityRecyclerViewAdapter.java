@@ -36,9 +36,15 @@ public class ProfileActivityRecyclerViewAdapter extends RecyclerView.Adapter<Pro
     private List<Access> accessList;
 
     public ProfileActivityRecyclerViewAdapter() {
+        // We call setAccessList every time ProfileActivity is started, so default to an empty list rather than demanding one in the constructor.
         accessList = Collections.emptyList();
     }
 
+    /**
+     * Set the access history to be displayed in the RecyclerView.
+     *
+     * @param accessList The access history to be displayed. Should be ordered with the newest timestamps first.
+     */
     public void setAccessList(List<Access> accessList) {
         this.accessList = accessList;
     }

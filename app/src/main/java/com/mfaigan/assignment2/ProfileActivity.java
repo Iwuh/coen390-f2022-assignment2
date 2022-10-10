@@ -75,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
         Intent parentIntent = getIntent();
         long profileId = parentIntent.getLongExtra(getString(R.string.intent_extra_key_profile_id), 0);
         if (profileId == 0) {
-            // If we weren't passed a profile ID from the main activity immediately return.
+            // If we weren't passed a profile ID from the main activity, immediately return.
             returnToMain();
         }
 

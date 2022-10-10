@@ -7,6 +7,9 @@ import com.mfaigan.assignment2.database.AccessType;
 
 import java.util.Date;
 
+/**
+ * Represents an access to a student's profile. Cannot be deleted, used to track accesses to sensitive information.
+ */
 @Entity
 public class Access {
 

@@ -28,6 +28,7 @@ public class AddProfileDialogFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Create the fragment's view from our custom layout file.
         View view = inflater.inflate(R.layout.dialogfragment_add_profile, container);
 
         editTextAddProfileSurname = view.findViewById(R.id.editTextAddProfileSurname);
@@ -50,6 +51,7 @@ public class AddProfileDialogFragment extends DialogFragment {
         buttonAddProfileSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Only add a new profile if all input checks pass.
                 if (validateInputs()) {
                     databaseHelper.addNewProfile(
                             Integer.parseInt(editTextAddProfileId.getText().toString()),
@@ -67,6 +69,11 @@ public class AddProfileDialogFragment extends DialogFragment {
         return view;
     }
 
+    /**
+     * Validates the inputs to all four fields and displays a Toast error message in the case of invalid input.
+     *
+     * @return True if all checks passed, otherwise false.
+     */
     private boolean validateInputs() {
         Editable surname = editTextAddProfileSurname.getText();
         Editable name = editTextAddProfileName.getText();
@@ -91,13 +98,14 @@ public class AddProfileDialogFragment extends DialogFragment {
             return false;
         }
 
+        // Testing showed that the input restriction always provides a valid input to parseDouble.
+        // Thus, we don't need to worry about NumberFormatException.
         double gpaD = Double.parseDouble(gpa.toString());
         // The GPA must be between 0 and 4.3 inclusive.
         if (gpaD < 0 || gpaD > 4.3) {
             Toast.makeText(getContext(), R.string.error_gpa_out_of_range, Toast.LENGTH_LONG).show();
             return false;
         }
-
 
         // If all checks pass, return true.
         return true;
