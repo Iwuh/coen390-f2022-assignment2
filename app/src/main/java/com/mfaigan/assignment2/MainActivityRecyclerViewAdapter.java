@@ -29,8 +29,7 @@ public class MainActivityRecyclerViewAdapter extends RecyclerView.Adapter<MainAc
             String text;
             if (useProfileName) {
                 text = String.format(Locale.ENGLISH, "%d. %s, %s", entryNumber, profile.getSurname(), profile.getName());
-            }
-            else {
+            } else {
                 text = String.format(Locale.ENGLISH, "%d. %d", entryNumber, profile.getUid());
             }
             textViewRecyclerViewProfile.setText(text);
@@ -63,7 +62,7 @@ public class MainActivityRecyclerViewAdapter extends RecyclerView.Adapter<MainAc
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // The list is zero-indexed, but we want the list to be one-indexed.
-        holder.setText(profiles.get(position), position+1, useProfileNames);
+        holder.setText(profiles.get(position), position + 1, useProfileNames);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

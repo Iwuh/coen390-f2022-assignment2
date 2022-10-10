@@ -92,8 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if (useProfileNames) {
             mode = "Surname";
             profiles = databaseHelper.getAllProfilesOrderedByName();
-        }
-        else {
+        } else {
             mode = "ID";
             profiles = databaseHelper.getAllProfilesOrderedByUid();
         }

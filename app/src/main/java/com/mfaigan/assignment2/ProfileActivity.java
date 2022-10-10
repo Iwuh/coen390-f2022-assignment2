@@ -1,15 +1,15 @@
 package com.mfaigan.assignment2;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mfaigan.assignment2.database.AccessType;
 import com.mfaigan.assignment2.database.entity.Access;
@@ -74,8 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         // Get the ID of the profile that triggered this activity switch.
         Intent parentIntent = getIntent();
         long profileId = parentIntent.getLongExtra(getString(R.string.intent_extra_key_profile_id), 0);
-        if (profileId == 0)
-        {
+        if (profileId == 0) {
             // If we weren't passed a profile ID from the main activity immediately return.
             returnToMain();
         }

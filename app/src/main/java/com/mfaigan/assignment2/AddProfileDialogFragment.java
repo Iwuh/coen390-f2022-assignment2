@@ -13,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import java.util.Objects;
-
 public class AddProfileDialogFragment extends DialogFragment {
 
     EditText editTextAddProfileSurname;
@@ -59,7 +57,7 @@ public class AddProfileDialogFragment extends DialogFragment {
                             editTextAddProfileName.getText().toString(),
                             Double.parseDouble(editTextAddProfileGpa.getText().toString()));
 
-                    ((MainActivity)requireActivity()).refreshProfileDisplay();
+                    ((MainActivity) requireActivity()).refreshProfileDisplay();
 
                     dismiss();
                 }
@@ -87,8 +85,7 @@ public class AddProfileDialogFragment extends DialogFragment {
             // The ID must be between 10000000 and 99999999.
             Toast.makeText(getContext(), R.string.error_id_out_of_range, Toast.LENGTH_LONG).show();
             return false;
-        }
-        else if (databaseHelper.getProfile(idL) != null) {
+        } else if (databaseHelper.getProfile(idL) != null) {
             // The ID must also be not in use.
             Toast.makeText(getContext(), R.string.error_id_already_in_use, Toast.LENGTH_LONG).show();
             return false;
